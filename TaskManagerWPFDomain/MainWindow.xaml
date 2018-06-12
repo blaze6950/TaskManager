@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskManagerWPFDomain"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TaskManager" Height="450" Width="546.551">
     <Grid>
-        
+        <DockPanel LastChildFill="True">
+            <Button Name="ButtonOpen" Height="25" DockPanel.Dock="Top" Click="ButtonOpen_OnClick">Open...</Button>
+            <Button Name="ButtonKill" Height="25" Click="ButtonKill_OnClick" DockPanel.Dock="Top">KillProcess</Button>
+            <TextBox DockPanel.Dock="Top" Height="25" Name="FindTextBox"></TextBox>
+            <ListView Name="ProcessesListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProcessName}" TextAlignment="Center" FontSize="20" Width="Auto"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="ID" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Id}" TextAlignment="Center" FontSize="20" Width="Auto"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Threads" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Threads.Count}" TextAlignment="Center" FontSize="20" Width="Auto"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Descriptors" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding HandleCount}" TextAlignment="Center" FontSize="20" Width="Auto"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
     </Grid>
 </Window>
